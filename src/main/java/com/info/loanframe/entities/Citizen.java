@@ -4,6 +4,7 @@ import com.info.loanframe.enums.CovidStatus;
 
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.NotNull;
+import javax.validation.constraints.Pattern;
 
 public class Citizen {
 
@@ -14,7 +15,8 @@ public class Citizen {
     private Integer age;
 
     @NotNull(message = "please provide COVID status")
-    private Enum<CovidStatus> isCovidPositive;
+    @Pattern(regexp = "YES|NO", message = "Please Provide YES or No for isCovidPositive")
+    private String isCovidPositive;
 
     @NotBlank(message = "Please provide country name")
     private String country;
@@ -38,10 +40,10 @@ public class Citizen {
     }
 
     public Enum<CovidStatus> getIsCovidPositive() {
-        return isCovidPositive;
+        return CovidStatus.valueOf(isCovidPositive);
     }
 
-    public Citizen setIsCovidPositive(Enum<CovidStatus> isCovidPositive) {
+    public Citizen setIsCovidPositive(String isCovidPositive) {
         this.isCovidPositive = isCovidPositive;
         return this;
     }
