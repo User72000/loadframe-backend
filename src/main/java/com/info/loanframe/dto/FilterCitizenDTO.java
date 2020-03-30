@@ -1,11 +1,9 @@
 package com.info.loanframe.dto;
 
-import com.info.loanframe.enums.CovidStatus;
-
 public class FilterCitizenDTO {
     private String name;
     private Integer age;
-    private Enum<CovidStatus> isCovidPositive;
+    private String isCovidPositive;
     private String country;
 
     public String getName() {
@@ -26,11 +24,11 @@ public class FilterCitizenDTO {
         return this;
     }
 
-    public Enum<CovidStatus> getIsCovidPositive() {
+    public String getIsCovidPositive() {
         return isCovidPositive;
     }
 
-    public FilterCitizenDTO setIsCovidPositive(Enum<CovidStatus> isCovidPositive) {
+    public FilterCitizenDTO setIsCovidPositive(String isCovidPositive) {
         this.isCovidPositive = isCovidPositive;
         return this;
     }

@@ -21,9 +21,9 @@ public class ManageCitizenController {
         return manageCitizenService.addCitizen(citizen);
     }
 
-    @PutMapping("/{id}")
-    public Boolean updateCitizen(@PathVariable String id){
-        return manageCitizenService.updateCitizen(id);
+    @PutMapping("/{id}/status/{status}")
+    public Boolean updateCitizen(@PathVariable String id, @PathVariable String status){
+        return manageCitizenService.updateCitizen(id,status);
     }
 
     @PostMapping("/filter")
