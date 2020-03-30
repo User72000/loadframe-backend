@@ -36,17 +36,19 @@ public class ManageCitizenService {
         return true;
     }
 
-    public List<Citizen> filterCitizen(FilterCitizenDTO filterCitizenDTO) {
+    public List filterCitizen(FilterCitizenDTO filterCitizenDTO) {
         Query query = new Query();
-        for (Field field : FilterCitizenDTO.class.getFields()) {
+        Field[] requestFields = FilterCitizenDTO.class.getDeclaredFields();
+        for (Field field : requestFields) {
+            field.setAccessible(true);
             try {
-                if (Objects.nonNull(field.get(filterCitizenDTO)) && field.get(filterCitizenDTO).toString().isEmpty()) {
+                if (Objects.nonNull(field.get(filterCitizenDTO)) && !field.get(filterCitizenDTO).toString().isEmpty()) {
                     query.addCriteria(Criteria.where(field.getName()).is(field.get(filterCitizenDTO)));
                 }
             } catch (IllegalAccessException e) {
                 e.printStackTrace();
             }
         }
-        return mongoTemplate.find(query, Citizen.class);
+        return mongoTemplate.find(query,FilterCitizenDTO.class,"citizen");
     }
 }

@@ -27,7 +27,7 @@ public class ManageCitizenController {
     }
 
     @PostMapping("/filter")
-    public List<Citizen> filterCitizen(FilterCitizenDTO filterCitizenDTO){
+    public List<Citizen> filterCitizen(@RequestBody FilterCitizenDTO filterCitizenDTO){
         return manageCitizenService.filterCitizen(filterCitizenDTO);
     }
 }
