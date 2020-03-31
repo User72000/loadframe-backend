@@ -15,7 +15,7 @@ public class Citizen {
     private Integer age;
 
     @NotNull(message = "please provide COVID status")
-    @Pattern(regexp = "YES|NO", message = "Please Provide YES or No for isCovidPositive")
+    @Pattern(regexp = "YES|NO|Yes|No", message = "Please Provide YES or No for isCovidPositive")
     private String isCovidPositive;
 
     @NotBlank(message = "Please provide country name")

@@ -51,4 +51,8 @@ public class ManageCitizenService {
         }
         return mongoTemplate.find(query,FilterCitizenDTO.class,"citizen");
     }
+
+    public List getCitizens() {
+        return mongoTemplate.findAll(FilterCitizenDTO.class,"citizen");
+    }
 }

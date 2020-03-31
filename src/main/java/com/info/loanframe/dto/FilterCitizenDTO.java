@@ -1,6 +1,7 @@
 package com.info.loanframe.dto;
 
 public class FilterCitizenDTO {
+    private String id;
     private String name;
     private Integer age;
     private String isCovidPositive;
@@ -8,6 +9,15 @@ public class FilterCitizenDTO {
 
     public String getName() {
         return name;
+    }
+
+    public String getId() {
+        return id;
+    }
+
+    public FilterCitizenDTO setId(String id) {
+        this.id = id;
+        return this;
     }
 
     public FilterCitizenDTO setName(String name) {

@@ -11,6 +11,7 @@ import java.util.List;
 
 @RestController
 @RequestMapping("api/v1/citizens")
+@CrossOrigin("*")
 public class ManageCitizenController {
 
     @Autowired
@@ -26,8 +27,8 @@ public class ManageCitizenController {
         return manageCitizenService.updateCitizen(id,status);
     }
 
-    @PostMapping("/filter")
-    public List<Citizen> filterCitizen(@RequestBody FilterCitizenDTO filterCitizenDTO){
-        return manageCitizenService.filterCitizen(filterCitizenDTO);
+    @GetMapping
+    public List<Citizen> getCitizen(){
+        return manageCitizenService.getCitizens();
     }
 }
