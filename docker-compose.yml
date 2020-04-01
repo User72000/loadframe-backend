@@ -1,0 +1,27 @@
+version: '3'
+services:
+  mongodb:
+    container_name: mongodb
+    image: mongo
+    tag: 4.0
+    ports:
+      - "27017:27017"
+    restart: always
+
+  backend:
+    container_name: backend
+    image: kk1226/lf-backend
+    depends_on:
+      - mongodb
+    ports:
+      - '8090:8090'
+    restart: always
+
+  frontend:
+    container_name: frontend
+    image: kk1226/lf-frontend
+    depends_on:
+      - backend
+    ports:
+      - '3000:3000'
+    restart: on-failure

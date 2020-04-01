@@ -2,8 +2,11 @@ package com.info.loanframe.config;
 
 import com.mongodb.MongoClient;
 import org.springframework.boot.context.properties.ConfigurationProperties;
+import org.springframework.context.annotation.Bean;
+import org.springframework.context.annotation.Configuration;
 import org.springframework.data.mongodb.config.AbstractMongoConfiguration;
 
+@Configuration
 @ConfigurationProperties(prefix = "mongodb")
 public class MongoConfig extends AbstractMongoConfiguration {
 
@@ -36,7 +39,9 @@ public class MongoConfig extends AbstractMongoConfiguration {
     }
 
     @Override
+    @Bean
     public MongoClient mongoClient() {
+        System.out.println("host-------"+host);
         return new MongoClient(host,port);
     }
 
